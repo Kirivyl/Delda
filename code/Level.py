@@ -17,6 +17,7 @@ class Level:
         self.object_sprites = YCameraGroupe()  # pygame.sprite.Group()
         self.touch_sprites = pygame.sprite.Group()
         self.player_sprite = pygame.sprite.GroupSingle()
+        self.weapon_sprite = pygame.sprite.Group()
         self.map()
         #HUD
         self.hud = HUD()
@@ -43,14 +44,17 @@ class Level:
                         if boundary == 'floor':
                             pass
         self.player = Player((8000, 4500), self.object_sprites, self.player_sprite, self.attack)
-    
+
     def attack(self):
-        Weapon(self.player, self.touch_sprites)
+            Weapon(self.player, self.weapon_sprite)
+
 
     def run(self):  # run the level
         self.hud.display(self.surface_display)
         self.object_sprites.custom_draw(self.player)  # draw the sprites
         self.touch_sprites.draw(self.surface_display)
+        self.weapon_sprite.draw(self.surface_display)
+        self.weapon_sprite.update()
         self.touch_sprites.update()
         self.object_sprites.update()
         self.player_sprite.update()
