@@ -1,3 +1,3 @@
 # Delda_SpieleProgrammierung
 
-# Nikko war hier 2022
+Nikko war hier 2022
