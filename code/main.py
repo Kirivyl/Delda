@@ -25,13 +25,16 @@ class Delda:
         self.level =  Level()
         self.level.map()
 
+
+        self.volume = 0.2
         mixer.init
         pygame.mixer.music.load(static.musicpath('music.wav'))
         pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(self.volume)
         
 
     
-        self.volume = 0.3
+        
         # self.music_louder = pygame.mixer.music.set_volume(self.volume + 0.1)
         # self.music_quiter = pygame.mixer.music.set_volume(self.volume -0.1)
 
