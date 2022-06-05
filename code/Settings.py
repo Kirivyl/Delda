@@ -36,20 +36,11 @@ class Settings(object):
     directon_x = 0
     directon_y = -18
 
- # floor settings
-    # floor_sizex = 25000
-    # floor_sizey = 20000
-    # def floorsize(self):
-    #     while True:
-    #         if Settings.floor_sizex <= 33792:
-    #             Settings.floor_sizex += 1000
-    #         if Settings.floor_sizey <= 27648:
-    #             Settings.floor_sizey += 1000
-    #         else:
-    #             pass
+    # Weapon
+    hitboxweapon_x = 0
+    hitboxweapon_y = 0
 
-
-
+   
     # Kamera Settings für denn Y-Kamera und X-Kamera
 
 
@@ -105,6 +96,24 @@ class Settings(object):
     #     'hammer': {'cooldown': 500, 'damage': 50, 'graphic': weaponpath('hammer.png')},
     #     'bigsword': {'cooldown': 400, 'damage': 40, 'graphic': weaponpath('bigsword.png')},
     # }
+     # HUD
+bar_height = 20
+health_bar_width = 100
+energy_bar_width = 70
+item_box_size = 50
+hud_font = Settings.imagepath('font.ttf')
+
+hud_font_size = 20
+    
+water_color = '#00FFFF'
+hud_bg_color = '#000000'
+hud_border_color =  '#FFFFFF'
+text_color = '#AAAAAA'
+
+health_color = 'red'
+energy_color = 'blue'
+hud_border = 'gold'
+
 weapon = { 
         'sword': {'cooldown': 200, 'damage': 15, 'graphic': pygame.image.load(Settings.weaponpath('sword.png'))},
         'axe': {'cooldown': 300, 'damage': 24, 'graphic': pygame.image.load(Settings.weaponpath('axe.png'))},

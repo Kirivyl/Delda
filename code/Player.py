@@ -25,15 +25,31 @@ class Player(pygame.sprite.Sprite):
         
        # player Movement    
         self.movement = pygame.math.Vector2()              # Bewegungsvektor [Settings.directon_x, Settings.directon_y]
-        self.speed = Settings.player_speed                  # Geschwindigkeit
+        
+                         # Geschwindigkeit
         self.attacking = False                             # Angriff
         self.attack_cooldown = Settings.attacking_cooldown # Angriff Cooldown
         self.attack_timer = None
         self.attack = attack
-      
-      
+        self.weapon_index = 0
+        self.weapon_list = list(weapon.keys())[self.weapon_index]
+        print(self.weapon_list)
+
+      # stats
+        self.stats = {'health': 100, 'max_health': 100, 'mana': 100, 'max_mana': 100, 'strength': 10, 'magic': 10, 'speed': 3, 'defense': 10, 'resistance': 10}
+        self.health = self.stats['health']
+        self.mana = self.stats['mana']
+        self.strength = self.stats['strength']
+        self.magic = self.stats['magic']
+        self.defense = self.stats['defense']
+        self.resistance = self.stats['resistance']
+        self.max_health = self.stats['max_health']
+        self.max_mana = self.stats['max_mana']
+        self.exp = 100
+        self.speed = self.stats['speed']
         self.object_sprites = object_sprites              # Gruppe aller Objekte
-                                                            # print(self.movement)
+              
+# print(self.movement)
     def import_player_assets(self):
         character_path = Settings.path['player']
         self.animations = { 'up' :[], 'down': [], 'left': [], 'right': [], 'right_idle': [], 'left_idle': [], 
@@ -79,7 +95,7 @@ class Player(pygame.sprite.Sprite):
         if leftclick and not self.attacking:
             self.attacking = True
             self.attack_timer = pygame.time.get_ticks()
-            print('attack')
+            self.attack()
 
         # spells
         if rightclick and not self.attacking:

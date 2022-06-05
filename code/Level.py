@@ -6,7 +6,7 @@ from testen import *
 from support import*
 from random import*
 from Weapon import *
-
+from hud import *
 
 class Level:
     def __init__(self):
@@ -15,10 +15,12 @@ class Level:
         self.object_sprites = YCameraGroupe()  # pygame.sprite.Group()
         self.touch_sprites = pygame.sprite.Group()
         self.player_sprite = pygame.sprite.GroupSingle()
-        
-
-
+    
         self.map()
+
+
+        #HUD
+        self.hud = HUD()
 
     def map(self):
 
@@ -28,7 +30,7 @@ class Level:
             'floor': import_csv_layout(Settings.mappath('Delda_floor.csv'))
         }
         graphics = {
-            'grass': import_folder('..\Delda_SpieleProgrammierung\code\graphics\grass'),
+            'grass': import_folder('..\Delda_Entwicklung\code\graphics\grass'),
             # 'player': import_folder('..\Delda_SpieleProgrammierung\code\graphics\player'),
 
         }
@@ -44,8 +46,7 @@ class Level:
 
                         if boundary == 'border':
                             # , self.touch_sprites
-                            Wall((x, y), [self.object_sprites,
-                                 self.touch_sprites], 'invisble')
+                            Wall((x, y), [self.object_sprites], 'invisble')
                         # if boundary == 'object':
                         #      random_grass_image = choice(graphics['grass'])
                         #      Wall((x,y), [self.touch_sprites, self.object_sprites], 'grass', random_grass_image)
@@ -54,17 +55,19 @@ class Level:
 
         self.player = Player((8000, 4500), self.object_sprites, self.player_sprite, self.attack)
     
-    def attack (self):
-        Weapon(self.player, [self.object_sprites,self.player_sprite])
+    def attack(self):
+        Weapon(self.player, self.touch_sprites)
 
     def run(self):  # run the level
+        self.hud.display(self.surface_display)
         self.object_sprites.custom_draw(self.player)  # draw the sprites
         # self.player_sprite.draw(self.player)
-        # self.touch_sprites.custom_draw(self.player)
-        # self.touch_sprites.update()W
+        self.touch_sprites.draw(self.surface_display)
+        self.touch_sprites.update()
         self.object_sprites.update()
         self.player_sprite.update()
         #testen(self.player.status)
+        
 
     # def cam(self):
     #     self.object_sprites.custom_draw(self.player)

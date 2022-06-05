@@ -1,6 +1,7 @@
 # Inspiration https://www.youtube.com/watch?v=QU1pPzEGrqw&t=289s
 # Ich habe das video als Inspiration und Hilfe genommen ich fande die Idee cool und hab die selben Techniken auf eigener weiße angewendet
 # music: DOOM_Enternal Theme
+
 from numpy import full
 import pygame, sys 
 from Settings import *  # import all Settings from Settings.py
@@ -9,7 +10,8 @@ from Level import * # import level from level.py
 from fullscreen import * # import fullscreen from fullscreen.py
 from win32api import GetSystemMetrics
 from support import*
-from pygame import mixer
+from pygame import*
+
 
 class Delda:
     def __init__(self):
@@ -21,6 +23,17 @@ class Delda:
 
         self.level =  Level()
         self.level.map()
+
+        mixer.init
+        pygame.mixer.music.load(Settings.musicpath('music.wav'))
+        pygame.mixer.music.play(-1)
+        
+
+    
+        self.volume = 0.3
+        self.music_louder = pygame.mixer.music.set_volume(self.volume + 0.1)
+        self.music_quiter = pygame.mixer.music.set_volume(self.volume -0.1)
+
         #aself.level.cam()
 
     # def vollbild(self):
@@ -28,9 +41,7 @@ class Delda:
 
     def run(self):
         while True:
-            mixer.init
-            pygame.mixer.music.load(Settings.musicpath('music.wav'))
-            pygame.mixer.music.play(-1)
+            
             for event in pygame.event.get():
                     
                 if event.type == pygame.QUIT:
@@ -38,10 +49,14 @@ class Delda:
                     sys.exit()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
+                        
                         pygame.quit()
                         sys.exit()
-                    if event.key == pygame.K_f:   
-                          fullscreen = not fullscreen
+                    if event.key == pygame.K_KP_PLUS: 
+                          
+                        pygame.mixer.music.set_volume(self.volume +0.1)
+                    elif event.key == pygame.K_KP_MINUS:
+                        pygame.mixer.music.set_volume(self.volume -0.1)
             #         if fullscreen:
             #              screen = pygame.display.set_mode((640, 480), FULLSCREEN, 32)
             #         else:
@@ -49,7 +64,7 @@ class Delda:
             # 
 
 
-            self.screen.fill('White')
+            self.screen.fill('Black')
             #debug('Delda')
             self.level.run()
             self.clock.tick(Settings.fps)   #Fps is set in Settings.py
