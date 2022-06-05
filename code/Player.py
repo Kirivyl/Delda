@@ -3,7 +3,7 @@ from Settings import *
 from support import import_folder
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, position, object_sprites, groups, attack):
+    def __init__(self, position, object_sprites, groups):
         super().__init__(groups)
         # Bild Drawn
         self.position = position
@@ -29,7 +29,7 @@ class Player(pygame.sprite.Sprite):
         self.attacking = False                             # Angriff
         self.attack_cooldown = Settings.attacking_cooldown # Angriff Cooldown
         self.attack_timer = None
-        self.attack = attack
+        #self.attack = attack
       
       
         self.object_sprites = object_sprites              # Gruppe aller Objekte
