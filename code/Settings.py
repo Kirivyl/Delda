@@ -1,6 +1,6 @@
 import pygame 
 import os
-
+from staticmethod import * 
 
 class Settings(object):
     
@@ -48,46 +48,46 @@ class Settings(object):
     # y_camera_pos_x = 100
 
 
+    # global path
+    # path = {}
+    # path['file'] = os.path.dirname(os.path.abspath(__file__))
+    # path['graphics'] = os.path.join(path['file'], "graphics")
+    # path['music'] = os.path.join(path['file'], "music")
+    # path['weapons'] = os.path.join(path['file'], "weapons")
+    # path['map'] = os.path.join(path['file'], "map")
+    # path['player'] = os.path.join(path['file'], "player")
+
+    # path_floor = {}
+    # path_floor['file'] = os.path.dirname(os.path.abspath(__file__))
+    # path_floor['map'] = os.path.join(path['file'], "map")
+
+    # @staticmethod
+    # def filepath(name):
+    #     return os.path.join(path['file'], name)
+
+    # @staticmethod
+    # def imagepath(name):
+    #     return os.path.join(path['graphics'], name)
+
+    # @staticmethod
+    # def floorpath(name):
+    #     return os.path.join(Settings.path_floor['map'], name)
+
+    # @staticmethod
+    # def musicpath(name):
+    #     return os.path.join(path['music'], name)
+
+    # @staticmethod
+    # def weaponpath(name):
+    #     return os.path.join(path['weapons'], name)
+
+    # @staticmethod
+    # def mappath(name):
+    #     return os.path.join(path['map'], name)
     
-    path = {}
-    path['file'] = os.path.dirname(os.path.abspath(__file__))
-    path['graphics'] = os.path.join(path['file'], "graphics")
-    path['music'] = os.path.join(path['file'], "music")
-    path['weapons'] = os.path.join(path['file'], "weapons")
-    path['map'] = os.path.join(path['file'], "map")
-    path['player'] = os.path.join(path['file'], "player")
-
-    path_floor = {}
-    path_floor['file'] = os.path.dirname(os.path.abspath(__file__))
-    path_floor['map'] = os.path.join(path['file'], "map")
-
-    @staticmethod
-    def filepath(name):
-        return os.path.join(Settings.path['file'], name)
-
-    @staticmethod
-    def imagepath(name):
-        return os.path.join(Settings.path['graphics'], name)
-
-    @staticmethod
-    def floorpath(name):
-        return os.path.join(Settings.path_floor['map'], name)
-
-    @staticmethod
-    def musicpath(name):
-        return os.path.join(Settings.path['music'], name)
-
-    @staticmethod
-    def weaponpath(name):
-        return os.path.join(Settings.path['weapons'], name)
-
-    @staticmethod
-    def mappath(name):
-        return os.path.join(Settings.path['map'], name)
-    
-    @staticmethod
-    def playerpath(name):
-        return os.path.join(Settings.path['player'], name)
+    # @staticmethod
+    # def playerpath(name):
+    #     return os.path.join(path['player'], name)
 
     # weapon = { 
     #     'sword': {'cooldown': 200, 'damage': 15, 'graphic': weaponpath('sword.png')},
@@ -97,30 +97,31 @@ class Settings(object):
     #     'bigsword': {'cooldown': 400, 'damage': 40, 'graphic': weaponpath('bigsword.png')},
     # }
      # HUD
-bar_height = 20
-health_bar_width = 100
-energy_bar_width = 70
-item_box_size = 50
-hud_font = Settings.imagepath('font.ttf')
+    bar_height = 20
+    health_bar_width = 100
+    energy_bar_width = 70
+    item_box_size = 50
+    hud_font = static.imagepath('font.ttf')
 
-hud_font_size = 20
-    
-water_color = '#00FFFF'
-hud_bg_color = '#000000'
-hud_border_color =  '#FFFFFF'
-text_color = '#AAAAAA'
 
-health_color = 'red'
-energy_color = 'blue'
-hud_border = 'gold'
+    hud_font_size = 20
+        
+    water_color = '#00FFFF'
+    hud_bg_color = '#000000'
+    hud_border_color =  '#FFFFFF'
+    text_color = '#AAAAAA'
 
-weapon = { 
-        'sword': {'cooldown': 200, 'damage': 15, 'graphic': pygame.image.load(Settings.weaponpath('sword.png'))},
-        'axe': {'cooldown': 300, 'damage': 24, 'graphic': pygame.image.load(Settings.weaponpath('axe.png'))},
-        'katana': {'cooldown': 150, 'damage': 10, 'graphic': pygame.image.load(Settings.weaponpath('katana.png'))},
-        'hammer': {'cooldown': 500, 'damage': 50, 'graphic': pygame.image.load(Settings.weaponpath('hammer.png'))},
-        'bigsword': {'cooldown': 400, 'damage': 40, 'graphic': pygame.image.load(Settings.weaponpath('bigsword.png'))},
-    }
+    health_color = 'red'
+    energy_color = 'blue'
+    hud_border = 'gold'
+
+# weapon = { 
+#         'sword': {'cooldown': 200, 'damage': 15, 'graphic': pygame.image.load(Settings.weaponpath('sword.png'))},
+#         'axe': {'cooldown': 300, 'damage': 24, 'graphic': pygame.image.load(Settings.weaponpath('axe.png'))},
+#         'katana': {'cooldown': 150, 'damage': 10, 'graphic': pygame.image.load(Settings.weaponpath('katana.png'))},
+#         'hammer': {'cooldown': 500, 'damage': 50, 'graphic': pygame.image.load(Settings.weaponpath('hammer.png'))},
+#         'bigsword': {'cooldown': 400, 'damage': 40, 'graphic': pygame.image.load(Settings.weaponpath('bigsword.png'))},
+#     }
 
 
 WORLD_MAP = [                                                                               # Map render

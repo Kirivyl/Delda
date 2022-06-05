@@ -1,5 +1,6 @@
 import pygame
 from Player import *
+from staticmethod import * 
 
 class Weapon (pygame.sprite.Sprite):
     def __init__(self,player,groups):
@@ -10,8 +11,8 @@ class Weapon (pygame.sprite.Sprite):
         
         
         print(movement)
-        full_path = os.path.join(Settings.weaponpath['player'], movement)
-        self.image = pygame.image.load(Settings.weaponpath('sword.png'))
+        #full_path = os.path.join(static.weaponpath['player'], movement)
+        self.image = pygame.image.load(static.weaponpath('sword.png'))
         
 
         if movement == 'right':

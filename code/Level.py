@@ -7,6 +7,7 @@ from support import*
 from random import*
 from Weapon import *
 from hud import *
+from staticmethod import * 
 
 class Level:
     def __init__(self):
@@ -25,9 +26,9 @@ class Level:
     def map(self):
 
         layouts = {
-            'border': import_csv_layout(Settings.mappath('Delda_border.csv')),
-            'object': import_csv_layout(Settings.mappath('Delda_objecte.csv')),
-            'floor': import_csv_layout(Settings.mappath('Delda_floor.csv'))
+            'border': import_csv_layout(static.mappath('Delda_border.csv')),
+            'object': import_csv_layout(static.mappath('Delda_objecte.csv')),
+            'floor': import_csv_layout(static.mappath('Delda_floor.csv'))
         }
         graphics = {
             'grass': import_folder('..\Delda_Entwicklung\code\graphics\grass'),
@@ -87,7 +88,7 @@ class YCameraGroupe(pygame.sprite.Group):
         self.halber_screen_hoehe = self.display_surface.get_size()[1] // 2
         # Settings.y_camera_pos_x, Settings.y_camera_pos_y)
         self.offset = pygame.math.Vector2()
-        self.floor_surface = pygame.image.load(Settings.floorpath('..\map\Delda.png')).convert()
+        self.floor_surface = pygame.image.load(static.floorpath('..\map\Delda.png')).convert()
         self.floor_surface = pygame.transform.scale(self.floor_surface,(Settings.floor['width']*2, Settings.floor['height']*2))
         self.floor_rect = self.floor_surface.get_rect(topleft=(0, 0))
 

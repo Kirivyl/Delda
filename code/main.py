@@ -11,6 +11,7 @@ from fullscreen import * # import fullscreen from fullscreen.py
 from win32api import GetSystemMetrics
 from support import*
 from pygame import*
+from staticmethod import * 
 
 
 class Delda:
@@ -25,14 +26,14 @@ class Delda:
         self.level.map()
 
         mixer.init
-        pygame.mixer.music.load(Settings.musicpath('music.wav'))
+        pygame.mixer.music.load(static.musicpath('music.wav'))
         pygame.mixer.music.play(-1)
         
 
     
         self.volume = 0.3
-        self.music_louder = pygame.mixer.music.set_volume(self.volume + 0.1)
-        self.music_quiter = pygame.mixer.music.set_volume(self.volume -0.1)
+        # self.music_louder = pygame.mixer.music.set_volume(self.volume + 0.1)
+        # self.music_quiter = pygame.mixer.music.set_volume(self.volume -0.1)
 
         #aself.level.cam()
 
@@ -52,11 +53,12 @@ class Delda:
                         
                         pygame.quit()
                         sys.exit()
-                    if event.key == pygame.K_KP_PLUS: 
-                          
+                    if event.key == pygame.K_KP_PLUS:            
                         pygame.mixer.music.set_volume(self.volume +0.1)
+                        print(self.volume)
                     elif event.key == pygame.K_KP_MINUS:
                         pygame.mixer.music.set_volume(self.volume -0.1)
+                        print(self.volume)
             #         if fullscreen:
             #              screen = pygame.display.set_mode((640, 480), FULLSCREEN, 32)
             #         else:

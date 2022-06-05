@@ -1,13 +1,14 @@
 import pygame
 from Settings import *
 from support import import_folder
+from staticmethod import * 
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, position, object_sprites, groups, attack):
         super().__init__(groups)
         # Bild Drawn
         self.position = position
-        self.image =  pygame.image.load(Settings.imagepath('Attack.png')).convert_alpha() # Bild in ordnerstruktur 
+        self.image =  pygame.image.load(static.imagepath('Attack.png')).convert_alpha() # Bild in ordnerstruktur 
         self.image = pygame.transform.scale(self.image, Settings.player_size)                                       # Position des Bildes
         self.rect = self.image.get_rect(topleft =self.position)
         self.mask = pygame.mask.from_surface(self.image) 
@@ -51,7 +52,7 @@ class Player(pygame.sprite.Sprite):
               
 # print(self.movement)
     def import_player_assets(self):
-        character_path = Settings.path['player']
+        character_path = static.path['player']
         self.animations = { 'up' :[], 'down': [], 'left': [], 'right': [], 'right_idle': [], 'left_idle': [], 
             'up_idle': [], 'down_idle': [], 'right_attack': [], 'left_attack': [], 'up_attack': [], 
             'down_attack': [],'left_roll': [], 'right_roll': [], 'up_roll': [], 'down_roll': []}
