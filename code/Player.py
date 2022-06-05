@@ -2,6 +2,7 @@ import pygame
 from Settings import *
 from support import import_folder
 from staticmethod import * 
+from pygame import mixer
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, position, object_sprites, groups, attack):
@@ -18,6 +19,7 @@ class Player(pygame.sprite.Sprite):
         # Setup
         self.import_player_assets()
 
+        pygame.mixer.init
         
         
         self.status = 'down'
@@ -61,12 +63,21 @@ class Player(pygame.sprite.Sprite):
         for animation in self.animations.keys():
             full_path = os.path.join(character_path, animation)
             self.animations[animation] = import_folder(full_path)
+        
+        
 
+    def sound_attack(self):
+        pygame.mixer.Sound
+        self.attack_sound_volume = 0.1
+        attack_sound = pygame.mixer.Sound(static.soundpath("attack.wav"))
+        pygame.mixer.Sound.play(attack_sound)
+        attack_sound.set_volume(self.attack_sound_volume)
 
     def keys(self):
         if pygame.key.get_pressed()[pygame.K_a] or pygame.key.get_pressed()[pygame.K_LEFT]:
             self.movement.x = -1
             self.status = 'left'
+            
            # print(self.movement)
         elif pygame.key.get_pressed()[pygame.K_d] or pygame.key.get_pressed()[pygame.K_RIGHT]:          # Rechts und links Bewegung
             self.movement.x = 1
@@ -93,7 +104,8 @@ class Player(pygame.sprite.Sprite):
         if leftclick and not self.attacking:
             self.attacking = True
             self.attack_timer = pygame.time.get_ticks()
-            self.attack()
+            self.attack()#
+            self.sound_attack()
 
         # spells
         if rightclick and not self.attacking:

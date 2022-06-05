@@ -12,6 +12,7 @@ class static(object):
     path['weapons'] = os.path.join(path['file'], "weapons")
     path['map'] = os.path.join(path['file'], "map")
     path['player'] = os.path.join(path['file'], "player")
+    path['sound'] = os.path.join(path['file'], "sound")
 
     path_floor = {}
     path_floor['file'] = os.path.dirname(os.path.abspath(__file__))
@@ -44,6 +45,10 @@ class static(object):
     @staticmethod
     def playerpath(name):
         return os.path.join(static.path['player'], name)
+
+    @staticmethod
+    def soundpath(name):
+        return os.path.join(static.path['sound'], name)
 
 weapon = { 
         'sword': {'cooldown': 200, 'damage': 15, 'graphic': pygame.image.load(static.weaponpath('sword.png'))},
