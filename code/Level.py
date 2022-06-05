@@ -16,7 +16,7 @@ class Level:
         self.surface_display = pygame.display.get_surface()
         self.object_sprites = YCameraGroupe()  # pygame.sprite.Group()
         self.touch_sprites = pygame.sprite.Group()
-        self.player_sprite = pygame.sprite.GroupSingle()
+        self.player_sprite = pygame.sprite.Group()
         self.weapon_sprite = pygame.sprite.Group()
         self.map()
         #HUD
@@ -46,7 +46,7 @@ class Level:
         self.player = Player((8000, 4500), self.object_sprites, self.player_sprite, self.attack)
 
     def attack(self):
-            Weapon(self.player, self.weapon_sprite)
+        Weapon(self.player, self.touch_sprites)
 
 
     def run(self):  # run the level
