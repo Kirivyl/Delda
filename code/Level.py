@@ -23,9 +23,9 @@ class Level:
     def map(self):
 
         layouts = {
-            'border': import_csv_layout('..\Delda_SpieleProgrammierung\code\map\Delda_border.csv'),
-            'object': import_csv_layout('..\Delda_SpieleProgrammierung\code\map\Delda_objecte.csv'),
-            'floor': import_csv_layout('..\Delda_SpieleProgrammierung\code\map\Delda_floor.csv')
+            'border': import_csv_layout(pygame.image.load(Settings.mappath('Delda_border.csv'))),
+            'object': import_csv_layout(pygame.image.load(Settings.mappath('Delda_objecte.csv'))),
+            'floor': import_csv_layout(pygame.image.load(Settings.mappath('Delda_floor.csv')))
         }
         graphics = {
             'grass': import_folder('..\Delda_SpieleProgrammierung\code\graphics\grass'),
@@ -52,19 +52,19 @@ class Level:
                         if boundary == 'floor':
                             pass
 
-        self.player = Player((8000, 4500), self.object_sprites, self.player_sprite)
+        self.player = Player((8000, 4500), self.object_sprites, self.player_sprite, self.attack)
     
-    # def attack (self):
-    #    Weapon(self.player, [self.object_sprites,self.player_sprite])
+    def attack (self):
+        Weapon(self.player, [self.object_sprites,self.player_sprite])
 
     def run(self):  # run the level
         self.object_sprites.custom_draw(self.player)  # draw the sprites
         # self.player_sprite.draw(self.player)
         # self.touch_sprites.custom_draw(self.player)
-        # self.touch_sprites.update()
+        # self.touch_sprites.update()W
         self.object_sprites.update()
         self.player_sprite.update()
-        testen(self.player.status)
+        #testen(self.player.status)
 
     # def cam(self):
     #     self.object_sprites.custom_draw(self.player)

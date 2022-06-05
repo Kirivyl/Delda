@@ -3,7 +3,7 @@ from Settings import *
 from support import import_folder
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, position, object_sprites, groups):
+    def __init__(self, position, object_sprites, groups, attack):
         super().__init__(groups)
         # Bild Drawn
         self.position = position
@@ -29,13 +29,13 @@ class Player(pygame.sprite.Sprite):
         self.attacking = False                             # Angriff
         self.attack_cooldown = Settings.attacking_cooldown # Angriff Cooldown
         self.attack_timer = None
-        #self.attack = attack
+        self.attack = attack
       
       
         self.object_sprites = object_sprites              # Gruppe aller Objekte
                                                             # print(self.movement)
     def import_player_assets(self):
-        character_path = '../Delda_SpieleProgrammierung/code/graphics/player/'
+        character_path = pygame.image.load(Settings.playerpath())
         self.animations = { 'up' :[], 'down': [], 'left': [], 'right': [], 'right_idle': [], 'left_idle': [], 
             'up_idle': [], 'down_idle': [], 'right_attack': [], 'left_attack': [], 'up_attack': [], 
             'down_attack': [],'left_roll': [], 'right_roll': [], 'up_roll': [], 'down_roll': []}
@@ -91,6 +91,7 @@ class Player(pygame.sprite.Sprite):
             self.attacking = True
             self.attack_timer = pygame.time.get_ticks()
             print('roll')
+
 
 
     def get_status(self):

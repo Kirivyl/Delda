@@ -1,4 +1,4 @@
-import pygame as pg
+import pygame 
 import os
 
 
@@ -57,18 +57,14 @@ class Settings(object):
     # y_camera_pos_x = 100
 
 
-    weapon = { 
-        'sword': {'cooldown': 200, 'damage': 15, 'graphic': '../graphics/weapons/sword/sword.png'},
-        'axe': {'cooldown': 300, 'damage': 24, 'graphic': '../graphics/weapons/axe/axe.png'},
-        'katana': {'cooldown': 150, 'damage': 10, 'graphic': '../graphics/weapons/katana/katana.png'},
-        'hammer': {'cooldown': 500, 'damage': 50, 'graphic': '../graphics/weapons/hammer/hammer.png'},
-        'bigsword': {'cooldown': 400, 'damage': 40, 'graphic': '../graphics/weapons/bigsword/bigsword.png'},
-    }
-
+    
     path = {}
     path['file'] = os.path.dirname(os.path.abspath(__file__))
     path['graphics'] = os.path.join(path['file'], "graphics")
-
+    path['music'] = os.path.join(path['file'], "music")
+    path['weapons'] = os.path.join(path['file'], "weapons")
+    path['map'] = os.path.join(path['file'], "map")
+    path['player'] = os.path.join(path['file'], "player")
 
     path_floor = {}
     path_floor['file'] = os.path.dirname(os.path.abspath(__file__))
@@ -85,6 +81,38 @@ class Settings(object):
     @staticmethod
     def floorpath(name):
         return os.path.join(Settings.path_floor['map'], name)
+
+    @staticmethod
+    def musicpath(name):
+        return os.path.join(Settings.path['music'], name)
+
+    @staticmethod
+    def weaponpath(name):
+        return os.path.join(Settings.path['weapons'], name)
+
+    @staticmethod
+    def mappath(name):
+        return os.path.join(Settings.path['map'], name)
+    
+    @staticmethod
+    def playerpath(name):
+        return os.path.join(Settings.path['player'], name)
+
+    # weapon = { 
+    #     'sword': {'cooldown': 200, 'damage': 15, 'graphic': weaponpath('sword.png')},
+    #     'axe': {'cooldown': 300, 'damage': 24, 'graphic': weaponpath('axe.png')},
+    #     'katana': {'cooldown': 150, 'damage': 10, 'graphic': weaponpath('katana.png')},
+    #     'hammer': {'cooldown': 500, 'damage': 50, 'graphic': weaponpath('hammer.png')},
+    #     'bigsword': {'cooldown': 400, 'damage': 40, 'graphic': weaponpath('bigsword.png')},
+    # }
+    weapon = { 
+        'sword': {'cooldown': 200, 'damage': 15, 'graphic': pygame.image.load(weaponpath('sword.png')).convert_alpha()},
+        'axe': {'cooldown': 300, 'damage': 24, 'graphic': pygame.image.load(weaponpath('axe.png')).convert_alpha()},
+        'katana': {'cooldown': 150, 'damage': 10, 'graphic': pygame.image.load(weaponpath('katana.png')).convert_alpha()},
+        'hammer': {'cooldown': 500, 'damage': 50, 'graphic': pygame.image.load(weaponpath('hammer.png')).convert_alpha()},
+        'bigsword': {'cooldown': 400, 'damage': 40, 'graphic': pygame.image.load(weaponpath('bigsword.png')).convert_alpha()},
+    }
+
 
 WORLD_MAP = [                                                                               # Map render
 ['x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'],
