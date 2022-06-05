@@ -8,8 +8,6 @@ class Wall(pygame.sprite.Sprite):
         self.position = position
         self.sprite_art = sprite_art  
         self.image = surface     
-        #self.image = pygame.image.load(Settings.imagepath('wall_bricks.png')).convert_alpha() # Bild in ordnerstruktur
-        #self.image = pygame.transform.scale(self.image, Settings.tile_size) # Bild skalieren
         if sprite_art == 'grass':
             self.rect = self.image.get_rect(topleft = (position[0], position[1] - TEST_SIZE))
         else:    
