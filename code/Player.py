@@ -35,7 +35,7 @@ class Player(pygame.sprite.Sprite):
         self.object_sprites = object_sprites              # Gruppe aller Objekte
                                                             # print(self.movement)
     def import_player_assets(self):
-        character_path = pygame.image.load(Settings.playerpath())
+        character_path = Settings.path['player']
         self.animations = { 'up' :[], 'down': [], 'left': [], 'right': [], 'right_idle': [], 'left_idle': [], 
             'up_idle': [], 'down_idle': [], 'right_attack': [], 'left_attack': [], 'up_attack': [], 
             'down_attack': [],'left_roll': [], 'right_roll': [], 'up_roll': [], 'down_roll': []}
@@ -43,7 +43,7 @@ class Player(pygame.sprite.Sprite):
 
         
         for animation in self.animations.keys():
-            full_path = character_path + animation
+            full_path = os.path.join(character_path, animation)
             #self.image = import_folder.surface_list.append(Settings.imagepath('Attack.png')) 
             self.animations[animation] = import_folder(full_path)
             #print (self.animations[animation])

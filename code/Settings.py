@@ -105,12 +105,12 @@ class Settings(object):
     #     'hammer': {'cooldown': 500, 'damage': 50, 'graphic': weaponpath('hammer.png')},
     #     'bigsword': {'cooldown': 400, 'damage': 40, 'graphic': weaponpath('bigsword.png')},
     # }
-    weapon = { 
-        'sword': {'cooldown': 200, 'damage': 15, 'graphic': pygame.image.load(weaponpath('sword.png')).convert_alpha()},
-        'axe': {'cooldown': 300, 'damage': 24, 'graphic': pygame.image.load(weaponpath('axe.png')).convert_alpha()},
-        'katana': {'cooldown': 150, 'damage': 10, 'graphic': pygame.image.load(weaponpath('katana.png')).convert_alpha()},
-        'hammer': {'cooldown': 500, 'damage': 50, 'graphic': pygame.image.load(weaponpath('hammer.png')).convert_alpha()},
-        'bigsword': {'cooldown': 400, 'damage': 40, 'graphic': pygame.image.load(weaponpath('bigsword.png')).convert_alpha()},
+weapon = { 
+        'sword': {'cooldown': 200, 'damage': 15, 'graphic': pygame.image.load(Settings.weaponpath('sword.png'))},
+        'axe': {'cooldown': 300, 'damage': 24, 'graphic': pygame.image.load(Settings.weaponpath('axe.png'))},
+        'katana': {'cooldown': 150, 'damage': 10, 'graphic': pygame.image.load(Settings.weaponpath('katana.png'))},
+        'hammer': {'cooldown': 500, 'damage': 50, 'graphic': pygame.image.load(Settings.weaponpath('hammer.png'))},
+        'bigsword': {'cooldown': 400, 'damage': 40, 'graphic': pygame.image.load(Settings.weaponpath('bigsword.png'))},
     }
 
 

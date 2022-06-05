@@ -23,9 +23,9 @@ class Level:
     def map(self):
 
         layouts = {
-            'border': import_csv_layout(pygame.image.load(Settings.mappath('Delda_border.csv'))),
-            'object': import_csv_layout(pygame.image.load(Settings.mappath('Delda_objecte.csv'))),
-            'floor': import_csv_layout(pygame.image.load(Settings.mappath('Delda_floor.csv')))
+            'border': import_csv_layout(Settings.mappath('Delda_border.csv')),
+            'object': import_csv_layout(Settings.mappath('Delda_objecte.csv')),
+            'floor': import_csv_layout(Settings.mappath('Delda_floor.csv'))
         }
         graphics = {
             'grass': import_folder('..\Delda_SpieleProgrammierung\code\graphics\grass'),
