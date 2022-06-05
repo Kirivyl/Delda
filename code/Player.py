@@ -111,12 +111,14 @@ class Player(pygame.sprite.Sprite):
         if rightclick and not self.attacking:
             self.attacking = True
             self.attack_timer = pygame.time.get_ticks()
-            print('spell')
+            self.attack()
+            self.sound_attack()
         # roll
         if pygame.key.get_pressed()[pygame.K_SPACE] and not self.attacking:
             self.attacking = True
             self.attack_timer = pygame.time.get_ticks()
-            print('roll')
+            self.attack()
+            self.sound_attack()
 
 
 
